@@ -21,6 +21,7 @@
             color: var(--white);
             overflow-x: hidden;
             line-height: 1.6;
+           width: 100%;
         }
 
         /* Floating WhatsApp Button */
