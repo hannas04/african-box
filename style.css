@@ -1,0 +1,729 @@
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #D4AF37;
+            --dark-gold: #B8860B;
+            --deep-black: #0a0a0a;
+            --rich-black: #1a1a1a;
+            --light-gold: #F4E4C1;
+            --white: #ffffff;
+            --shadow: rgba(212, 175, 55, 0.3);
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: var(--deep-black);
+            color: var(--white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .whatsapp-float svg {
+            width: 32px;
+            height: 32px;
+            fill: white;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 999;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--gold);
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--gold);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--deep-black) 0%, var(--rich-black) 100%);
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--gold) 0%, transparent 70%);
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(50px, 50px) rotate(180deg); }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: var(--light-gold);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: linear-gradient(135deg, var(--gold), var(--dark-gold));
+            color: var(--deep-black);
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1.4s ease;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 6rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: var(--gold);
+            margin: 1rem auto;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: var(--rich-black);
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--gold), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold);
+            box-shadow: 0 15px 40px var(--shadow);
+        }
+
+        .service-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            fill: var(--gold);
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .service-card h3 {
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--light-gold);
+            line-height: 1.8;
+        }
+
+        /* Gallery Sections */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 350px;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            background: var(--rich-black);
+            border: 2px solid var(--gold);
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--gold) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+        }
+
+        .gallery-item:hover::before {
+            opacity: 0.3;
+        }
+
+        /* .gallery-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--gold);
+            text-align: center;
+            padding: 2rem;
+        } */
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            transition: transform 0.4s ease;
+
+
+        }
+
+
+        /* New CSS to ensure the images fill the item space */
+.gallery-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* KEY: This ensures the image covers the 350px container without stretching */
+    object-fit: cover; 
+    z-index: 0; /* Keep the image behind the hover effect and the text */
+}
+
+/* Updated selector for the text label to sit on top */
+.gallery-label {
+    /* Retains the key styling from your old .gallery-placeholder */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: var(--gold);
+    text-align: center;
+    padding: 2rem;
+    
+    /* NEW: Ensures the text is on the highest layer (above the image and the ::before overlay) */
+    position: relative; 
+    z-index: 2; 
+    
+    /* Optional: Add a subtle text shadow for contrast against the image */
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+}
+
+
+
+        /* Slider Section */
+        .slider-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 3rem auto;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 15px 50px var(--shadow);
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--rich-black);
+            border: 3px solid var(--gold);
+            color: var(--gold);
+            font-size: 1.5rem;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(212, 175, 55, 0.8);
+            border: none;
+            color: var(--deep-black);
+            font-size: 2rem;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slider-btn:hover {
+            background: var(--gold);
+        }
+
+        .slider-btn.prev { left: 20px; }
+        .slider-btn.next { right: 20px; }
+
+
+        /* --- New CSS to ensure the images fit and cover the slide --- */
+
+.slide {
+    position: relative; /* Essential: Allows absolute positioning of the image inside */
+    /* ... existing styles ... */
+    /* You may want to remove the existing 'background' and 'border' from .slide 
+       if the image should cover everything. 
+       Keep 'height: 500px;' */
+    background: none; /* Recommended: Let the image be the background */
+    border: none;     /* Recommended: Let the image be the background */
+}
+
+.slide-background {
+    position: absolute; /* Takes it out of the normal flow */
+    top: 0;
+    left: 0;
+    width: 100%;        /* Fills the entire width of the slide */
+    height: 100%;       /* Fills the entire height (500px) of the slide */
+    object-fit: cover;  /* KEY: Ensures the image covers the container without distorting,
+                           cropping the sides if needed. */
+    z-index: 1;         /* Places the image behind the text */
+}
+
+/* Ensure the text is on top of the image and centered */
+.slide > div {
+    position: relative; 
+    z-index: 2; /* Puts the text clearly in front of the image */
+    /* You can add a background-color: rgba(0, 0, 0, 0.4); here for better text contrast */
+}
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            color: var(--light-gold);
+            font-size: 1.1rem;
+            line-height: 2;
+        }
+
+        .about-text h3 {
+            color: var(--gold);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-image {
+            height: 400px;
+            background: var(--rich-black);
+            border: 3px solid var(--gold);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 1.3rem;
+        }
+
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: var(--rich-black);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid var(--gold);
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateX(10px);
+        }
+
+        .testimonial-text {
+            color: var(--light-gold);
+            font-style: italic;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            fill: var(--gold);
+            flex-shrink: 0;
+        }
+
+        .contact-details h3 {
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-details p {
+            color: var(--light-gold);
+            line-height: 1.8;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 1rem;
+            background: var(--rich-black);
+            border: 2px solid var(--gold);
+            border-radius: 8px;
+            color: var(--white);
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--light-gold);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--gold), var(--dark-gold));
+            color: var(--deep-black);
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--deep-black);
+            padding: 3rem 5%;
+            text-align: center;
+            border-top: 2px solid var(--gold);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            fill: var(--gold);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.2);
+        }
+
+        .footer-text {
+            color: var(--light-gold);
+            margin-top: 2rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                left: -100%;
+                top: 80px;
+                flex-direction: column;
+                background: var(--deep-black);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                padding: 2rem 0;
+                border-top: 1px solid var(--gold);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .about-content,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .whatsapp-float svg {
+                width: 28px;
+                height: 28px;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+  
