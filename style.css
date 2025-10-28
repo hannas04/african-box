@@ -581,7 +581,7 @@
             margin-bottom: 0.5rem;
         }
 
-        .form-group input,
+        /* .form-group input,
         .form-group textarea {
             padding: 1rem;
             background: var(--rich-black);
@@ -590,7 +590,22 @@
             color: var(--white);
             font-family: inherit;
             transition: border-color 0.3s ease;
-        }
+        } */
+
+        /* Update this existing CSS block */
+.form-group input,
+.form-group textarea {
+    padding: 1rem;
+    background: var(--rich-black);
+    border: 2px solid var(--gold);
+    border-radius: 8px;
+    color: var(--white);
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+    /* --- FIX: Set minimum font-size to prevent automatic mobile zoom --- */
+    font-size: 16px; 
+    /* ------------------------------------------------------------------ */
+}
 
         .form-group input:focus,
         .form-group textarea:focus {
